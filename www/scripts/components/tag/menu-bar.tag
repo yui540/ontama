@@ -8,10 +8,14 @@ menu-bar(style="width:{ opts.width }px")
 	
 	style(scoped).
 		:scope {
+			position: fixed;
+			top: 0;
+			left: 0;
 			display: block;
 			height: 60px;
 			background-color: #409388;
 			box-shadow: 0 0 5px #4c4c4c;
+			z-index: 5;
 		}
 		:scope:after {
 			content: "";

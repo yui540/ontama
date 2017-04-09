@@ -2,10 +2,7 @@ main-content(
 	style="width:{ width }px;height:{ height }px"
 )
 	menu-bar(width="{ width }")
-	audio-box(
-		width="{ width }"
-		height="{ height }"
-	)
+	audio-box(width="{ width }")
 
 	style(scoped).
 		:scope {
