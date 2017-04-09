@@ -1,0 +1,21 @@
+# node_modules
+node_modules/
+
+# .DS_Store
+.DS_Store
+
+# plugins
+plugins
+
+# platform 
+platforms/*
+!platforms/platforms.json
+
+# hooks
+hooks
+
+# js
+*.js
+
+# html
+*.html
