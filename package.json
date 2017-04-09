@@ -1,15 +1,14 @@
 {
-  "name": "onsen-android",
+  "name": "onsen-tamago",
   "version": "0.0.1",
-  "description": "声優ラジオサイト「音泉」をダウンロードするAndroidアプリ",
-  "main": "index.js",
+  "description": "声優ラジオサイト音泉をダウンロードするAndroidアプリ「音泉卵」",
   "scripts": {
     "compile": "gulp",
     "watch": "gulp watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yuki540net/onsen-android.git"
+    "url": "git+https://github.com/yuki540net/onsen-tamago.git"
   },
   "keywords": [
     "音泉",
@@ -18,9 +17,9 @@
   "author": "yuki540",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yuki540net/onsen-android/issues"
+    "url": "https://github.com/yuki540net/onsen-tamago/issues"
   },
-  "homepage": "https://github.com/yuki540net/onsen-android#readme",
+  "homepage": "https://github.com/yuki540net/onsen-tamago#readme",
   "devDependencies": {
     "browserify": "^14.3.0",
     "gulp": "^3.9.1",
