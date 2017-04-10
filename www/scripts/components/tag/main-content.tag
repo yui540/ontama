@@ -4,6 +4,11 @@ main-content(
 	menu-bar(width="{ width }")
 	audio-box(width="{ width }")
 	storage-btn
+	list-box(
+		width="{ width }"
+		height="{ height }"
+	)
+	modal-view
 
 	style(scoped).
 		:scope {
