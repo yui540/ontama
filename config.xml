@@ -25,7 +25,8 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <icon src="__icon__/icon.png" />
     <engine name="android" spec="~5.1.1" />
-    <plugin name="cordova-plugin-file-transfer" spec="~1.5.1" />
     <plugin name="cordova-plugin-statusbar" spec="~2.1.3" />
+    <plugin name="cordova-plugin-file-transfer" spec="~1.5.1" />
 </widget>
