@@ -3,6 +3,7 @@ main-content(
 )
 	menu-bar(width="{ width }")
 	audio-box(width="{ width }")
+	storage-btn
 
 	style(scoped).
 		:scope {

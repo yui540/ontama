@@ -10,6 +10,7 @@ top.observer  = riot.observable()
 require './components/js/main-content'
 require './components/js/menu-bar'
 require './components/js/audio-box'
+require './components/js/storage-btn'
 
 document.addEventListener 'deviceready', ->
 	riot.mount '*'

@@ -23,7 +23,7 @@ audio-box
 		:scope {
 			display: block;
 			padding-top: 60px;
-			padding-bottom: 70px;
+			padding-bottom: 105px;
 		}
 		:scope:after {
 			content: "";
@@ -123,7 +123,6 @@ audio-box
 		##
 		@loadOut = ->
 			@root.children[0].innerHTML = ''
-			console.log @root.children[0]
 
 		##
 		# 曜日の番組情報の取得
@@ -161,9 +160,7 @@ audio-box
 				day = onsen_api.encode onsen_api.today()
 
 				@getInfoList day, (json) =>
-					# 更新
 					@update()
-
 					@loadOut()
 
 		# change day -----------------------------------------
