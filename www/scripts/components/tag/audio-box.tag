@@ -165,11 +165,13 @@ audio-box
 
 		# change day -----------------------------------------
 		observer.on 'change-day', (day) =>
-			@data = []
+			onsen_api.destroy()
+
 			@update()
 			@loadIn()
 
-			day = onsen_api.encode day
+			@data = []
+			day   = onsen_api.encode day
 			@getInfoList day, (json) =>
 					@update()
 					@loadOut()

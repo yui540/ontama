@@ -1,3 +1,4 @@
+reqs = []
 list = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat']
 
 module.exports = 
@@ -13,6 +14,16 @@ module.exports =
 			if req.readyState is 4 and req.status is 200
 				fn JSON.parse req.responseText
 		req.send()
+		reqs.push req
+
+	##
+	# コネクションの切断
+	##
+	destroy: ->
+		for req in reqs
+			req.abort()
+
+		reqs = []
 
 	##
 	# 今日の曜日を取得
