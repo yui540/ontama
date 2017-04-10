@@ -2,6 +2,7 @@ audio-box
 	section
 	section
 		section.audio-li(
+			onclick="{ clickAudio }"
 			style="width:{ width }px;"
 			each="{ data }"
 			data-id="{ id }"
@@ -39,6 +40,9 @@ audio-box
 			background-color: #fff;
 			box-shadow: 0 0 5px #bbb;
 			animation: scale 0.3s ease 0s forwards;
+		}
+		:scope .audio-li:active {
+			transform: scale(0.8);
 		}
 		:scope .audio-li .thumb {
 			width: 100%;
@@ -167,12 +171,26 @@ audio-box
 		observer.on 'change-day', (day) =>
 			onsen_api.destroy()
 
+			@data = []
 			@update()
 			@loadIn()
 
-			@data = []
-			day   = onsen_api.encode day
+			day = onsen_api.encode day
 			@getInfoList day, (json) =>
 					@update()
 					@loadOut()
+
+		# click audio ----------------------------------------
+		@clickAudio = (e) =>
+			info =
+				cast  : e.item.cast
+				count : e.item.count
+				title : e.item.title
+				date  : e.item.date
+				thumb : e.item.thumb
+				id    : e.item.id
+				url   : e.item.url
+
+			observer.trigger 'open-info', [info]
+
 
