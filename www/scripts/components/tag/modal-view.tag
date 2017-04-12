@@ -133,31 +133,32 @@ modal-view(
 
 		# download -------------------------------------------
 		@download = (e) ->
-			@hiddenModal()
-			if not file_util.check @url
-				alert 'すでにダウンロードしています。'
-				return
-
-			url  = e.target.getAttribute 'data-url'
-			info =
-				title : '第' + @count + '回: ' + @title
+			id     = Math.floor(Math.random() * 10000000)
+			url    = e.target.getAttribute 'data-url'
+			name   = url.split('/')
+			name   = name[name.length - 1]
+			params =
+				id    : id
 				thumb : @thumb
+				title : @title
+				count : '第' + @count + '回'
 				url   : @url
+				name  : name
+
+			observer.trigger 'download-start', params
+			@hiddenModal()
 
 			# progress -----------------------------------------
-			file_util.download url, (per) =>
-				'per'
+			file_util.download params, (per) =>
+				params.per = per
+				observer.trigger 'download-progress', params
 
 			# success ------------------------------------------
 			, (_file) =>
-				# localStorageへ書き込み
-				info['f_path'] = _file.nativeURL
-				file_util.localWrite info
-
-				# イベント発火
-				observer.trigger 'download-fin', @url
+				observer.trigger 'download-fin', params
 
 			# error --------------------------------------------
 			, =>
+				observer.trigger 'download-error', params
 				alert 'ダウンロードに失敗しました。'
 

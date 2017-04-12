@@ -7,9 +7,14 @@ list-box(
 	div.inner(
 		style="width:{ width }px;height:{ height }px"
 	)
-		section.box
-
-		section.player
+		download-li(
+			each="{ loads }"
+			thumb="{ thumb }"
+			title="{ title }"
+			count="{ count }"
+			url="{ url }"
+			per="{ per }"
+		)
 
 	style(scoped).
 		:scope {
@@ -32,12 +37,6 @@ list-box(
 			height: 100%;
 			display: table;
 			background-color: #409388;
-		}
-		:scope[data-state="show"] .close {
-			animation: show_close 0.5s ease 0s forwards;
-		}
-		:scope[data-state="hidden"] .close {
-			animation: hidden_close 0.5s ease 0s forwards;
 		}
 		:scope .close .box {
 			display: table-cell;
@@ -69,40 +68,15 @@ list-box(
 			position: absolute;
 			top: 0;
 			left: 70px;
-			background-color: #fff;
-		}
-		:scope[data-state="show"] .inner {
-			animation: show_list 0.5s ease 0s forwards;
-		}
-		:scope[data-state="hidden"] .inner {
-			animation: hidden_list 0.5s ease 0s forwards;
-		}
-
-		:scope .inner .box {
-			width: 100%;
-		}
-
-		@keyframes show_list {
-			0%   { left: 100%; }
-			100% { left: 70px; }
-		}
-		@keyframes hidden_list {
-			0%   { left: 70px; }
-			100% { left: 100%; }
-		}
-		@keyframes show_close {
-			0%   { left: -70px; }
-			100% { left: 0; }
-		}
-		@keyframes hidden_close {
-			0%   { left: 0; }
-			100% { left: -70px; }
+			background-color: #eee;
+			overflow: auto;
 		}
 
 	script(type="coffee").
 		
 		# mount -------------------------------------------
 		@on 'mount', ->
+			@loads  = []
 			@width  = parseInt(opts.width) - 70
 			@height = parseInt(opts.height)
 
@@ -111,6 +85,27 @@ list-box(
 		# open list ---------------------------------------
 		observer.on 'open-list', =>
 			@root.setAttribute 'data-state', 'show'
+
+		# download start ----------------------------------
+		observer.on 'download-start', (params) =>
+			@loads.push params
+			@update()
+
+		# download start ----------------------------------
+		observer.on 'download-progress', (params) =>
+			for li, i in @loads
+				if params.id is li.id
+					@loads[i].per = params.per
+
+			@update()
+
+		# download start ----------------------------------
+		observer.on 'download-fin', (params) =>
+			for li, i in @loads
+				if params.id is li.id
+					@loads.splice i, 1
+
+			@update()
 
 		# close list --------------------------------------
 		@onClose = ->
