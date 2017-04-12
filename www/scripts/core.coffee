@@ -1,9 +1,9 @@
 top.API      = 'https://onsen-downloader.herokuapp.com/'
 top.LIST     = null
-top.root_obj = null
 top.root     = null
 
 # module
+top.file_util = require './file-util'
 top.onsen_api = require './onsen-api'
 top.riot      = require 'riot'
 top.observer  = riot.observable()
@@ -17,14 +17,14 @@ require './components/js/list-box'
 require './components/js/modal-view'
 
 document.addEventListener 'deviceready', ->
-	top.file_util = require './file-util'
+	# 広告
+	banner = 'ca-app-pub-4078521472076790/3428481467'
+	AdMob.createBanner banner, ->
+		AdMob.showBanner(AdMob.AD_POSITION.BOTTOM_CENTER)
 	
-	# ファイル保存パスの取得
-	requestFileSystem LocalFileSystem.PERSISTENT, 0, (file_system) =>
-		top.root_obj = file_system.root
-		top.root     = root_obj.toURL()
-	, (err) =>
-		alert 'ファイルアクセスに失敗しました。'
+	# ディレクトリ取得
+	requestFileSystem LocalFileSystem.PERSISTENT, 0, (e) ->
+		top.root = e.root.toURL()
 
 	# コンポーネントをマウント
 	riot.mount '*'

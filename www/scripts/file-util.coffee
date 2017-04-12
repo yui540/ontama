@@ -1,4 +1,6 @@
-file_transfer = new FileTransfer()
+file_transfer = null
+document.addEventListener 'deviceready', ->
+	file_transfer = new FileTransfer()
 
 module.exports =
 	##
@@ -12,7 +14,8 @@ module.exports =
 		url    = encodeURI url
 		f_name = url.split '/'
 		f_name = f_name[f_name.length - 1]
-		f_path = root + 'v0.0.1/' + f_name
+		f_path = root + f_name
+		console.log f_path
 
 		# progress ------------------------------------------
 		file_transfer.onprogress = (e) =>
@@ -22,6 +25,7 @@ module.exports =
 		file_transfer.download url, f_path, (_file) =>
 			fn_success _file
 		, (err) =>
+			console.log err
 			fn_error()
 
 	##
