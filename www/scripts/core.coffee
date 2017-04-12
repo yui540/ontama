@@ -14,6 +14,7 @@ require './components/js/menu-bar'
 require './components/js/audio-box'
 require './components/js/storage-btn'
 require './components/js/list-box'
+require './components/js/download-li'
 require './components/js/modal-view'
 
 document.addEventListener 'deviceready', ->
