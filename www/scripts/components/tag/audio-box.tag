@@ -13,7 +13,6 @@ audio-box
 			data-count="{ count }"
 			data-url="{ url }"
 		)
-			div.thumb(style="background-image:url({ thumb })")
 			h3.title { title }
 			p.cast { cast }
 			p.info 
@@ -35,7 +34,7 @@ audio-box
 			float: left;
 			margin-top: 10px;
 			margin-left: 10px;
-			height: 210px;
+			height: 110px;
 			border-radius: 3px;
 			background-color: #fff;
 			box-shadow: 0 0 5px #bbb;
@@ -43,14 +42,6 @@ audio-box
 		}
 		:scope .audio-li:active {
 			transform: scale(0.8);
-		}
-		:scope .audio-li .thumb {
-			width: 100%;
-			height: 100px;
-			background-position: center;
-			background-size: cover;
-			border-top-left-radius: 3px;
-			border-top-right-radius: 3px;
 		}
 		:scope .audio-li .title {
 			font-size: 12px;

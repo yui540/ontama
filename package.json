@@ -1,7 +1,7 @@
 {
-  "name": "onsen-tamago",
+  "name": "ontama",
   "version": "0.0.1",
-  "description": "声優ラジオサイト音泉をダウンロードするAndroidアプリ「音泉卵」",
+  "description": "声優ラジオサイト音泉をダウンロードするAndroidアプリ「音卵」",
   "scripts": {
     "compile": "gulp",
     "watch": "gulp watch"
@@ -11,8 +11,8 @@
     "url": "git+https://github.com/yuki540net/onsen-tamago.git"
   },
   "keywords": [
-    "音泉",
-    "onsen"
+    "cordova",
+    "onsen-node"
   ],
   "author": "yuki540",
   "license": "MIT",

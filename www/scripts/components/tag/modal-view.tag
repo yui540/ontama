@@ -5,11 +5,8 @@ modal-view(
 		div.item(
 			each="{ info }"
 		)
-			div.thumb(style="background-image:url({ thumb })")
 			h2.title { title }
-			p.cast { cast }
-			p.date { date }
-			p.count { '第' + count + '回' }
+			h1.msg ダウンロードしますか？
 			div.download(
 				data-url="{ url }"
 				onclick="{ download }"
@@ -49,50 +46,31 @@ modal-view(
 			opacity: 1;
 			animation: show 0.3s ease 0s forwards;
 		}
-		:scope .item .thumb {
-			width: 100%;
-			height: 150px;
-			background-size: cover;
-			background-position: center;
-			border-top-left-radius: 5px;
-			border-top-right-radius: 5px;
-		}
 		:scope .item .title {
 			width: 100%;
 			font-size: 14px;
-			padding: 5px;
+			text-align: center;
+			padding: 10px 0;
 			box-sizing: border-box;
 		}
-		:scope .item .cast {
-			width: 100%;
-			font-size: 12px;
-			padding: 5px;
-			box-sizing: border-box;
-		}
-		:scope .item .date {
-			width: 100%;
-			font-size: 10px;
-			text-align: right;
-			padding: 5px;
-			box-sizing: border-box;
-		}
-		:scope .item .count {
-			width: 100%;
-			font-size: 10px;
-			text-align: right;
-			padding: 5px;
-			box-sizing: border-box;
+		:scope .item .msg {
+			padding: 15px 0;
+			font-size: 20px;
+			color: #fff;
+			text-align: center;
+			background-color: #4c4c4c;
 		}
 		:scope .item .download {
-			width: 50px;
-			height: 50px;
+			width: 40px;
+			height: 40px;
 			border-radius: 50%;
 			background-color: #ed588d;
 			background-image: url(../../images/download.png);
-			background-size: 60%;
+			background-size: 50%;
 			background-position: center;
 			background-repeat: no-repeat;
-			margin: 10px auto;
+			margin: 0 auto;
+			margin-top: 10px;
 			box-shadow: 0 0 5px #ccc;
 		}
 

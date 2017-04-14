@@ -1,5 +1,4 @@
 download-li
-	div.thumb(style="background-image:url({ opts.thumb })")
 	div.info
 		h3.title { opts.count + ':' + opts.title }
 		div.load-bar

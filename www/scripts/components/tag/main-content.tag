@@ -9,6 +9,7 @@ main-content(
 		height="{ height }"
 	)
 	modal-view
+	notification(width="{ width }")
 
 	style(scoped).
 		:scope {
