@@ -9,7 +9,7 @@ module.exports =
 	download: (params, fn_progress, fn_success, fn_error) ->
 		file_transfer = new FileTransfer()
 		url    = encodeURI params.url
-		f_path = root + '音泉卵/' + params.title + '/' + params.count + '/' + params.name
+		f_path = root + '音卵/' + params.title + '/' + params.count + '/' + params.name
 
 		# progress ------------------------------------------
 		file_transfer.onprogress = (e) =>

@@ -16,7 +16,6 @@ require './components/js/storage-btn'
 require './components/js/list-box'
 require './components/js/download-li'
 require './components/js/modal-view'
-require './components/js/notification'
 
 document.addEventListener 'deviceready', ->
 	# 広告

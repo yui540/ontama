@@ -13,21 +13,8 @@ download-li
 			margin: 10px auto;
 			box-shadow: 0 0 10px #ccc;
 		}
-		:scope:after {
-			content: "";
-			display: block;
-			clear: both;
-		}
-		:scope .thumb {
-			float: left;
-			width: 25%;
-			height: 45px;
-			background-position: center;
-			background-size: cover;
-		}
 		:scope .info {
-			float: left;
-			width: 75%;
+			width: 100%;
 			height: 45px;
 		}
 		:scope .info .title {
@@ -52,7 +39,7 @@ download-li
 			top: 0;
 			left: 0;
 			height: 5px;
-			background-color: rgb(0,100,255);
+			background-color: #ed588d;
 		}
 
 	script(type="coffee").

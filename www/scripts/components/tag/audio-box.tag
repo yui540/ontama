@@ -12,7 +12,9 @@ audio-box
 			data-update="{ update }"
 			data-count="{ count }"
 			data-url="{ url }"
+			data-type="{ ext }"
 		)
+			div.thumb(data-type="{ ext }")
 			h3.title { title }
 			p.cast { cast }
 			p.info 
@@ -34,14 +36,29 @@ audio-box
 			float: left;
 			margin-top: 10px;
 			margin-left: 10px;
-			height: 110px;
+			height: 200px;
 			border-radius: 3px;
 			background-color: #fff;
 			box-shadow: 0 0 5px #bbb;
+			overflow: hidden;
 			animation: scale 0.3s ease 0s forwards;
 		}
 		:scope .audio-li:active {
 			transform: scale(0.8);
+		}
+		:scope .audio-li .thumb {
+			width: 100%;
+			height: 90px;
+			background-position: center;
+			background-size: auto 60%;
+			background-repeat: no-repeat;
+			background-color: #eee;
+		}
+		:scope .audio-li .thumb[data-type="mp3"] {
+			background-image: url(../../images/mp3.png);
+		}
+		:scope .audio-li .thumb[data-type="mp4"] {
+			background-image: url(../../images/mp4.png);
 		}
 		:scope .audio-li .title {
 			font-size: 12px;
@@ -131,13 +148,22 @@ audio-box
 
 			list.forEach (li) =>
 				onsen_api.connect API + li, (json) =>
-					count    += 1
+					ext = null
+					url = json.moviePath.pc
+
+					if url.match /.*\.mp3/
+						ext = 'mp3'
+					else 
+						ext = 'mp4'
+
+					count += 1
 					@data.push 
 						width  : parseInt(opts.width) / 2 - 15
 						id     : li
+						ext    : ext
 						title  : json.title
 						thumb  : 'http://www.onsen.ag' + json.thumbnailPath
-						url    : json.moviePath.pc
+						url    : url
 						cast   : json.personality
 						date   : json.update
 						count  : json.count
@@ -174,6 +200,7 @@ audio-box
 		# click audio ----------------------------------------
 		@clickAudio = (e) =>
 			info =
+				ext   : e.item.ext
 				cast  : e.item.cast
 				count : e.item.count
 				title : e.item.title
@@ -181,6 +208,8 @@ audio-box
 				thumb : e.item.thumb
 				id    : e.item.id
 				url   : e.item.url
+
+			console.log info
 
 			observer.trigger 'open-info', [info]
 

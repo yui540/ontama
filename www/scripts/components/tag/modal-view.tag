@@ -6,7 +6,7 @@ modal-view(
 			each="{ info }"
 		)
 			h2.title { title }
-			h1.msg ダウンロードしますか？
+			h1.msg(data-type="{ ext }")
 			div.download(
 				data-url="{ url }"
 				onclick="{ download }"
@@ -38,7 +38,7 @@ modal-view(
 			margin: 0 auto;
 			border-radius: 5px;
 			box-shadow: 0 0 10px #ccc;
-			background-color: #fff;
+			background-color: #409388;
 			padding-bottom: 10px;
 			opacity: 0;
 		}
@@ -50,15 +50,23 @@ modal-view(
 			width: 100%;
 			font-size: 14px;
 			text-align: center;
+			color: #fff;
 			padding: 10px 0;
 			box-sizing: border-box;
 		}
 		:scope .item .msg {
-			padding: 15px 0;
-			font-size: 20px;
-			color: #fff;
-			text-align: center;
-			background-color: #4c4c4c;
+			width: 100%;
+			height: 90px;
+			background-position: center;
+			background-size: auto 60%;
+			background-repeat: no-repeat;
+			background-color: #347B71;
+		}
+		:scope .item .msg[data-type="mp3"] {
+			background-image: url(../../images/mp3.png);
+		}
+		:scope .item .msg[data-type="mp4"] {
+			background-image: url(../../images/mp4.png);
 		}
 		:scope .item .download {
 			width: 40px;
@@ -71,7 +79,6 @@ modal-view(
 			background-repeat: no-repeat;
 			margin: 0 auto;
 			margin-top: 10px;
-			box-shadow: 0 0 5px #ccc;
 		}
 
 		@keyframes show {
@@ -133,6 +140,9 @@ modal-view(
 
 			# success ------------------------------------------
 			, (_file) =>
+				navigator.notification.alert 'ダウンロード完了', =>
+					console.log params.title
+				, params.title
 				observer.trigger 'download-fin', params
 
 			# error --------------------------------------------
