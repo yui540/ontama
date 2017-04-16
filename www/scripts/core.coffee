@@ -1,6 +1,6 @@
-top.API      = 'https://onsen-downloader.herokuapp.com/'
-top.LIST     = null
-top.root     = null
+top.API  = 'http://ontama.yuki540.com/'
+top.LIST = null
+top.root = null
 
 # module
 top.file_util = require './file-util'
