@@ -8,6 +8,11 @@
 「音卵」は、曜日ごとの番組を表示し、誰でも簡単にダウンロードすることができます。
 また、可愛くてフラットなデザインなUIに仕上げました。
 
+## 記事
+このアプリについての記事はQiitaにあります。
+
+[http://qiita.com/yuki540/items/45d2bc788fffb7e62e0a](http://qiita.com/yuki540/items/45d2bc788fffb7e62e0a)
+
 ### 番組一覧画面
 ![list](./__sample__/list.png)
 
